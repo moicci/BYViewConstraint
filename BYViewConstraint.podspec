@@ -10,24 +10,21 @@
 Pod::Spec.new do |s|
   s.name             = "BYViewConstraint"
   s.version          = "0.1.0"
-  s.summary          = "A short description of BYViewConstraint."
+  s.summary          = "convinient class for Constraint of View (Auto Layout)."
   s.description      = <<-DESC
-                       An optional longer description of BYViewConstraint
-
-                       * Markdown format.
-                       * Don't worry about the indent, we strip it!
+                       convinient class for Constraint of View (Auto Layout).
                        DESC
-  s.homepage         = "https://github.com/<GITHUB_USERNAME>/BYViewConstraint"
+  s.homepage         = "https://github.com/moicci/BYViewConstraint"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
   s.author           = { "fukuda minoru" => "fukuda@bylo.jp" }
-  s.source           = { :git => "https://github.com/<GITHUB_USERNAME>/BYViewConstraint.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/moicci/BYViewConstraint.git", :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.platform     = :ios, '7.0'
+  s.platform     = :ios, '8.0'
   s.requires_arc = true
 
-  s.source_files = 'Pod/Classes/**/*'
+  s.source_files = 'Pod/Classes/**/*.swift'
   s.resource_bundles = {
     'BYViewConstraint' => ['Pod/Assets/*.png']
   }
