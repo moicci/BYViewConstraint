@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.version          = "0.1.0"
   s.summary          = "convinient class for Constraint of View (Auto Layout)."
   s.description      = <<-DESC
-                       convinient class for Constraint of View (Auto Layout).
+                       BYViewConstraint is covenient class to implement the "Auto Layout".
                        DESC
   s.homepage         = "https://github.com/moicci/BYViewConstraint"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
