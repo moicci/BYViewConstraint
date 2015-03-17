@@ -1,0 +1,6 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+target 'ObjcDemo', :exclusive => true do
+  pod "BYViewConstraint", :path => "../../"
+  use_frameworks!
+end

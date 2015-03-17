@@ -1,6 +1,6 @@
 //
-//  ByViewConstraintSwiftDemoTests.swift
-//  ByViewConstraintSwiftDemoTests
+//  SwiftDemoTests.swift
+//  SwiftDemoTests
 //
 //  Created by fukuda on 2015/03/17.
 //  Copyright (c) 2015年 bylo media inc. All rights reserved.
@@ -9,7 +9,7 @@
 import UIKit
 import XCTest
 
-class ByViewConstraintSwiftDemoTests: XCTestCase {
+class SwiftDemoTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
