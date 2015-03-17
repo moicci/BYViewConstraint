@@ -42,6 +42,8 @@ constraint
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
+If you install this library by CocoaPods, clone the repo from <https://github.com/moicci/BYViewConstraint> for the Example.
+
 - for Swift user: see ViewController.swift in the sub-directory 'SwiftDemo'.
 - for Objective-C user: see ViewController.m in the sub-directory 'ObjcDemo'.
 
