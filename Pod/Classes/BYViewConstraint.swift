@@ -29,47 +29,17 @@ import UIKit
 	}
 
 	private let superview:UIView
-	private var views:[String:UIView]! = nil
-	private var metrics:[String:Int]! = nil
 	private var constraints:[AnyObject] = []
+	private var target:UIView?
 	
 	public init(superview:UIView) {
 		self.superview = superview
 	}
 
-	public func view(name:String, view:UIView) -> BYViewConstraint {
-		prepareView(view)
-
-		if self.views == nil {
-			self.views = Dictionary()
-		}
-		self.views[name] = view
-		return self
-	}
-
-	public func metric(name:String, value:Int) -> BYViewConstraint {
-		if self.metrics == nil {
-			self.metrics = Dictionary()
-		}
-		self.metrics[name] = value
-		return self
-	}
-
-	public func format(format:String) -> BYViewConstraint {
-		let array = NSLayoutConstraint.constraintsWithVisualFormat(format,
-						//options:NSLayoutFormatOptions(0),
-						options:NSLayoutFormatOptions.allZeros,
-						metrics:self.metrics,
-						views:self.views)
-		self.constraints += array
-		return self
-	}
-
 	// ややこしいやつはこれ
-	public func complex(view:UIView, at:NSLayoutAttribute, to toView:UIView!, at toAt:NSLayoutAttribute, metric:CGFloat = 0) -> BYViewConstraint {
-		prepareView(view)
+	public func complex(at:NSLayoutAttribute, to toView:UIView!, at toAt:NSLayoutAttribute, metric:CGFloat = 0) -> BYViewConstraint {
 		self.constraints.append(NSLayoutConstraint(
-                item: view,
+                item: self.target!,
                 attribute: at,
                 relatedBy: .Equal,
                 toItem: toView,
@@ -80,14 +50,142 @@ import UIKit
 		return self;
 	}
 
-	// 中央指定の VisualFormat は "H:|-[view]-|" で行けるかと思ったらエラーになるので
-	// 専用メソッドにした。
-	// @param axis .CenterX, .CenterY
-	public func centerX(view:UIView) -> BYViewConstraint {
-		return center(view, axis:.H)
+	public func apply() -> BYViewConstraint {
+		self.superview.addConstraints(self.constraints)
+		return self
 	}
-	public func centerY(view:UIView) -> BYViewConstraint {
-		return center(view, axis:.V)
+
+	public func clear() -> BYViewConstraint {
+		self.superview.removeConstraints(self.constraints)
+		self.constraints = []
+		return self
+	}
+
+	public func view(view:UIView) -> BYViewConstraint {
+		view.setTranslatesAutoresizingMaskIntoConstraints(false)
+		self.target = view;
+		return self;
+	}
+
+	// @param axis .CenterX, .CenterY
+	public func centerX() -> BYViewConstraint {
+		return center(.H)
+	}
+	public func centerY() -> BYViewConstraint {
+		return center(.V)
+	}
+
+	public func center(axis:Axis) -> BYViewConstraint {
+		return complex(axis.center(), to:self.superview, at:axis.center())
+	}
+
+	// view の左を attachTo の右に揃える
+	public func left(attachTo:UIView, offset:CGFloat = 0) -> BYViewConstraint {
+		return complex(.Left, to:attachTo, at:.Right, metric:offset)
+	}
+	public func right(attachTo:UIView, offset:CGFloat = 0) -> BYViewConstraint {
+		return complex(.Right, to:attachTo, at:.Left, metric:offset)
+	}
+	public func top(attachTo:UIView, offset:CGFloat = 0) -> BYViewConstraint {
+		return complex(.Top, to:attachTo, at:.Bottom, metric:offset)
+	}
+	public func bottom(attachTo:UIView, offset:CGFloat = 0) -> BYViewConstraint {
+		return complex(.Bottom, to:attachTo, at:.Top, metric:offset)
+	}
+
+	// for objc
+	public func attachLeft(to:UIView, offset:CGFloat) -> BYViewConstraint { return left(to, offset:offset) }
+	public func attachRight(to:UIView, offset:CGFloat) -> BYViewConstraint { return right(to, offset:offset) }
+	public func attachTop(to:UIView, offset:CGFloat) -> BYViewConstraint { return top(to, offset:offset) }
+	public func attachBottom(to:UIView, offset:CGFloat) -> BYViewConstraint { return bottom(to, offset:offset) }
+
+	public func attachLeft(to:UIView) -> BYViewConstraint { return left(to, offset:0) }
+	public func attachRight(to:UIView) -> BYViewConstraint { return right(to, offset:0) }
+	public func attachTop(to:UIView) -> BYViewConstraint { return top(to, offset:0) }
+	public func attachBottom(to:UIView) -> BYViewConstraint { return bottom(to, offset:0) }
+
+	// view の左を alignTo の左に揃える
+	public func left(alignTo:UIView? = nil, offset:CGFloat = 0) -> BYViewConstraint {
+		return complex(.Left, to:asToView(alignTo), at:.Left, metric:offset)
+	}
+	public func right(alignTo:UIView? = nil, offset:CGFloat = 0) -> BYViewConstraint {
+		return complex(.Right, to:asToView(alignTo), at:.Right, metric:offset)
+	}
+	public func top(alignTo:UIView? = nil, offset:CGFloat = 0) -> BYViewConstraint {
+		return complex(.Top, to:asToView(alignTo), at:.Top, metric:offset)
+	}
+	public func bottom(alignTo:UIView? = nil, offset:CGFloat = 0) -> BYViewConstraint {
+		return complex(.Bottom, to:asToView(alignTo), at:.Bottom, metric:offset)
+	}
+
+	// for objc
+	public func alignLeft(to:UIView, offset:CGFloat) -> BYViewConstraint { return left(alignTo:to, offset:offset) }
+	public func alignRight(to:UIView, offset:CGFloat) -> BYViewConstraint { return right(alignTo:to, offset:offset) }
+	public func alignTop(to:UIView, offset:CGFloat) -> BYViewConstraint { return top(alignTo:to, offset:offset) }
+	public func alignBottom(to:UIView, offset:CGFloat) -> BYViewConstraint { return bottom(alignTo:to, offset:offset) }
+
+	public func alignLeft(to:UIView) -> BYViewConstraint { return left(alignTo:to, offset:0) }
+	public func alignRight(to:UIView) -> BYViewConstraint { return right(alignTo:to, offset:0) }
+	public func alignTop(to:UIView) -> BYViewConstraint { return top(alignTo:to, offset:0) }
+	public func alignBottom(to:UIView) -> BYViewConstraint { return bottom(alignTo:to, offset:0) }
+
+	public func alignLeft() -> BYViewConstraint { return left(alignTo:nil, offset:0) }
+	public func alignRight() -> BYViewConstraint { return right(alignTo:nil, offset:0) }
+	public func alignTop() -> BYViewConstraint { return top(alignTo:nil, offset:0) }
+	public func alignBottom() -> BYViewConstraint { return bottom(alignTo:nil, offset:0) }
+
+	// 横いっぱい
+	public func fullWidth() -> BYViewConstraint {
+		complex(.Left, to:self.superview, at:.Left)
+		complex(.Right, to:self.superview, at:.Right)
+		return self
+	}
+	// 縦いっぱい
+	public func fullHeight() -> BYViewConstraint {
+		complex(.Top, to:self.superview, at:.Top)
+		complex(.Bottom, to:self.superview, at:.Bottom)
+		return self
+	}
+ 
+	// 幅指定
+	/*
+	public func width(value:CGFloat? = nil) -> BYViewConstraint {
+		return size(.H, value:value)
+	}
+	*/
+
+	//objc用
+	public func width() -> BYViewConstraint {
+		return size(.H, value:nil)
+	}
+	public func width(value:CGFloat) -> BYViewConstraint {
+		return size(.H, value:value)
+	}
+
+	// 高さ指定
+	/*
+	public func height(value:CGFloat? = nil) -> BYViewConstraint {
+		return size(.V, value:value)
+	}
+	*/
+
+	// objc用
+	public func height() -> BYViewConstraint {
+		return size(.V, value:nil)
+	}
+	public func height(value:CGFloat) -> BYViewConstraint {
+		return size(.V, value:value)
+	}
+
+	public func size(axis:Axis, value:CGFloat?) -> BYViewConstraint {
+		var size: CGFloat = 0
+		if value == nil {
+			size = (axis == .H ? self.target!.bounds.size.width : self.target!.bounds.size.height)
+		}
+		else {
+			size = CGFloat(value!)
+		}
+		return complex(axis.size(), to:nil, at:.NotAnAttribute, metric:size)
 	}
 
 	private func asToView(toView:UIView?) -> UIView {
@@ -95,119 +193,5 @@ import UIKit
 			return view
 		}
 		return self.superview
-	}
-
-	public func center(view:UIView, axis:Axis) -> BYViewConstraint {
-		return complex(view, at:axis.center(), to:self.superview, at:axis.center())
-	}
-
-	// view の左を attachTo の右に揃える
-	public func left(view:UIView, attachTo:UIView, offset:CGFloat = 0) -> BYViewConstraint {
-		return complex(view, at:.Left, to:attachTo, at:.Right, metric:offset)
-	}
-	public func right(view:UIView, attachTo:UIView, offset:CGFloat = 0) -> BYViewConstraint {
-		return complex(view, at:.Right, to:attachTo, at:.Left, metric:offset)
-	}
-	public func top(view:UIView, attachTo:UIView, offset:CGFloat = 0) -> BYViewConstraint {
-		return complex(view, at:.Top, to:attachTo, at:.Bottom, metric:offset)
-	}
-	public func bottom(view:UIView, attachTo:UIView, offset:CGFloat = 0) -> BYViewConstraint {
-		return complex(view, at:.Bottom, to:attachTo, at:.Top, metric:offset)
-	}
-
-	// view の左を alignTo の左に揃える
-	public func left(view:UIView, alignTo:UIView? = nil, offset:CGFloat = 0) -> BYViewConstraint {
-		return complex(view, at:.Left, to:asToView(alignTo), at:.Left, metric:offset)
-	}
-	public func right(view:UIView, alignTo:UIView? = nil, offset:CGFloat = 0) -> BYViewConstraint {
-		return complex(view, at:.Right, to:asToView(alignTo), at:.Right, metric:offset)
-	}
-	public func top(view:UIView, alignTo:UIView? = nil, offset:CGFloat = 0) -> BYViewConstraint {
-		return complex(view, at:.Top, to:asToView(alignTo), at:.Top, metric:offset)
-	}
-	public func bottom(view:UIView, alignTo:UIView? = nil, offset:CGFloat = 0) -> BYViewConstraint {
-		return complex(view, at:.Bottom, to:asToView(alignTo), at:.Bottom, metric:offset)
-	}
-
-	// 横いっぱい
-	public func fullWidth(view:UIView) -> BYViewConstraint {
-		complex(view, at:.Left, to:self.superview, at:.Left)
-		complex(view, at:.Right, to:self.superview, at:.Right)
-		return self
-	}
-	// 縦いっぱい
-	public func fullHeight(view:UIView) -> BYViewConstraint {
-		complex(view, at:.Top, to:self.superview, at:.Top)
-		complex(view, at:.Bottom, to:self.superview, at:.Bottom)
-		return self
-	}
- 
-	// 横いっぱい
-	public func fullWidthNamed(viewName:String) -> BYViewConstraint {
-		return format("H:|-0-[\(viewName)]-0-|")
-	}
- 
-	// 縦いっぱい
-	public func fullHeightNamed(viewName:String) -> BYViewConstraint {
-		return format("V:|-0-[\(viewName)]-0-|")
-	}
-
-	// 幅指定
-	/*
-	public func width(view:UIView, value:CGFloat? = nil) -> BYViewConstraint {
-		return size(view, axis:.H, value:value)
-	}
-	*/
-
-	//objc用
-	public func width(view:UIView) -> BYViewConstraint {
-		return size(view, axis:.H, value:nil)
-	}
-	public func width(view:UIView, value:CGFloat) -> BYViewConstraint {
-		return size(view, axis:.H, value:value)
-	}
-
-	// 高さ指定
-	/*
-	public func height(view:UIView, value:CGFloat? = nil) -> BYViewConstraint {
-		return size(view, axis:.V, value:value)
-	}
-	*/
-
-	// objc用
-	public func height(view:UIView) -> BYViewConstraint {
-		return size(view, axis:.V, value:nil)
-	}
-	public func height(view:UIView, value:CGFloat) -> BYViewConstraint {
-		return size(view, axis:.V, value:value)
-	}
-
-	public func size(view:UIView, axis:Axis, value:CGFloat?) -> BYViewConstraint {
-		var size: CGFloat = 0
-		if value == nil {
-			size = (axis == .H ? view.bounds.size.width : view.bounds.size.height)
-		}
-		else {
-			size = CGFloat(value!)
-		}
-		return complex(view, at:axis.size(), to:nil, at:.NotAnAttribute, metric:size)
-	}
-
-	public func apply() -> BYViewConstraint {
-		self.superview.addConstraints(self.constraints)
-		return self
-	}
-
-	public func clear() -> BYViewConstraint {
-		self.views = nil
-		self.metrics = nil
-		self.superview.removeConstraints(self.constraints)
-		self.constraints = []
-		return self
-	}
-
-	private func prepareView(view:UIView) -> UIView {
-		view.setTranslatesAutoresizingMaskIntoConstraints(false)
-		return view
 	}
 }

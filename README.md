@@ -3,39 +3,43 @@
 BYViewConstraint is covenient class to implement the "Auto Layout" as below.
 
 ```swift
-var constraint = BYViewConstraint(superview:self.view)
 let topLabel = addLabel("fullWidth/top", backColor:UIColor.redColor())
 let bottomLabel = addLabel("fullWidth/bottom", backColor:UIColor.redColor())
 let centerLabel = addLabel("centerX/Y", backColor:UIColor.blueColor())
 let leftLabel = addLabel("left", backColor:UIColor.greenColor())
 let rightLabel = addLabel("right", backColor:UIColor.greenColor())
 
-constraint
-    // topLabel
-    .fullWidth(topLabel)
+let constraint = BYViewConstraint(superview:self.view)
+
+constraint.view(topLabel)
+    .fullWidth()
+    .top()
+    .height(50)
+
+constraint.view(bottomLabel)
+    .fullWidth()
+    .bottom()
+    .height(50)
+
+constraint.view(centerLabel)
+    .centerX()
+    .centerY()
+    .width(150)
+    .height(150)
+
+constraint.view(leftLabel)
     .top(topLabel)
-    .height(topLabel, value:50)
-    // bottomLabel
-    .fullWidth(bottomLabel)
     .bottom(bottomLabel)
-    .height(bottomLabel, value:50)
-    // centerLabel
-    .centerX(centerLabel)
-    .centerY(centerLabel)
-    .width(centerLabel, value:150)
-    .height(centerLabel, value:150)
-    // leftLabel
-    .top(leftLabel, attachTo:topLabel)
-    .bottom(leftLabel, attachTo:bottomLabel)
-    .left(leftLabel)
-    .right(leftLabel, attachTo:centerLabel)
-    // rightLabel
-    .top(rightLabel, attachTo:topLabel)
-    .bottom(rightLabel, attachTo:bottomLabel)
-    .left(rightLabel, attachTo:centerLabel)
-    .right(rightLabel)
-    // apply constraint
-    .apply()
+    .left()
+    .right(centerLabel)
+
+constraint.view(rightLabel)
+    .top(topLabel)
+    .bottom(bottomLabel)
+    .left(centerLabel)
+    .right()
+
+constraint.apply()
 ```
 
 ## Usage

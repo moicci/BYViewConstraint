@@ -34,30 +34,34 @@
 	
 	BYViewConstraint* constraint = [[BYViewConstraint alloc] initWithSuperview:self.view];
 	
-	// topLabel
-	[constraint fullWidth:topLabel];
-	[constraint top:topLabel alignTo:nil offset:0];
-	[constraint height:topLabel value:50];
-	// bottomLabel
-	[constraint fullWidth:bottomLabel];
-	[constraint bottom:bottomLabel alignTo:nil offset:0];
-	[constraint height:bottomLabel value:50];
-	// centerLabel
-	[constraint centerX:centerLabel];
-	[constraint centerY:centerLabel];
-	[constraint width:centerLabel value:150];
-	[constraint height:centerLabel value:150];
-	// leftLabel
-	[constraint top:leftLabel attachTo:topLabel offset:0];
-	[constraint bottom:leftLabel attachTo:bottomLabel offset:0];
-	[constraint left:leftLabel alignTo:nil offset:0];
-	[constraint right:leftLabel attachTo:centerLabel offset:0];
-	// rightLabel
-	[constraint top:rightLabel attachTo:topLabel offset:0];
-	[constraint bottom:rightLabel attachTo:bottomLabel offset:0];
-	[constraint left:rightLabel attachTo:centerLabel offset:0];
-	[constraint right:rightLabel alignTo:nil offset:0];
-	// apply
+	[constraint view:topLabel];
+	[constraint fullWidth];
+	[constraint alignTop];
+	[constraint height:50];
+
+	[constraint view:bottomLabel];
+	[constraint fullWidth];
+	[constraint alignBottom];
+	[constraint height:50];
+
+	[constraint view:centerLabel];
+	[constraint centerX];
+	[constraint centerY];
+	[constraint width:150];
+	[constraint height:150];
+
+	[constraint view:leftLabel];
+	[constraint attachTop:topLabel];
+	[constraint attachBottom:bottomLabel];
+	[constraint alignLeft];
+	[constraint attachRight:centerLabel];
+
+	[constraint view:rightLabel];
+	[constraint attachTop:topLabel];
+	[constraint attachBottom:bottomLabel];
+	[constraint attachLeft:centerLabel];
+	[constraint alignRight];
+
 	[constraint apply];
 }
 
