@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import BYViewConstraint
 
 class ViewController: UIViewController {
 
@@ -47,15 +46,15 @@ class ViewController: UIViewController {
 			.height(150)
 
 		constraint.view(leftLabel)
-			.top(topLabel)
-			.bottom(bottomLabel)
+			.attachTop(topLabel)
+			.attachBottom(bottomLabel)
 			.left()
-			.right(centerLabel)
+			.attachRight(centerLabel)
 
 		constraint.view(rightLabel)
-			.top(topLabel)
-			.bottom(bottomLabel)
-			.left(centerLabel)
+			.attachTop(topLabel)
+			.attachBottom(bottomLabel)
+			.attachLeft(centerLabel)
 			.right()
 
 		constraint.apply()

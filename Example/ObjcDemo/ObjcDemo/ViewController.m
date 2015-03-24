@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "ObjcDemo-Swift.h"
+#import "BYViewConstraint.h"
 
 @interface ViewController ()
 
@@ -36,12 +36,12 @@
 	
 	[constraint view:topLabel];
 	[constraint fullWidth];
-	[constraint alignTop];
+	[constraint top];
 	[constraint height:50];
 
 	[constraint view:bottomLabel];
 	[constraint fullWidth];
-	[constraint alignBottom];
+	[constraint bottom];
 	[constraint height:50];
 
 	[constraint view:centerLabel];
@@ -53,14 +53,14 @@
 	[constraint view:leftLabel];
 	[constraint attachTop:topLabel];
 	[constraint attachBottom:bottomLabel];
-	[constraint alignLeft];
+	[constraint left];
 	[constraint attachRight:centerLabel];
 
 	[constraint view:rightLabel];
 	[constraint attachTop:topLabel];
 	[constraint attachBottom:bottomLabel];
 	[constraint attachLeft:centerLabel];
-	[constraint alignRight];
+	[constraint right];
 
 	[constraint apply];
 }

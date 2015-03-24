@@ -1,6 +1,48 @@
 # BYViewConstraint
 
-BYViewConstraint is covenient class to implement the "Auto Layout" as below.
+BYViewConstraint is covenient class to implement the "Auto Layout" in Objective-C as below.
+
+```objc
+	UILabel* topLabel = [self addLabel:@"fullWidth/top" backColor:[UIColor redColor]];
+	UILabel* bottomLabel = [self addLabel:@"fullWidth/bottom" backColor:[UIColor redColor]];
+	UILabel* centerLabel = [self addLabel:@"centerX/Y" backColor:[UIColor blueColor]];
+	UILabel* leftLabel = [self addLabel:@"left" backColor:[UIColor greenColor]];
+	UILabel* rightLabel = [self addLabel:@"right" backColor:[UIColor greenColor]];
+	
+	BYViewConstraint* constraint = [[BYViewConstraint alloc] initWithSuperview:self.view];
+	
+	[constraint view:topLabel];
+	[constraint fullWidth];
+	[constraint top];
+	[constraint height:50];
+
+	[constraint view:bottomLabel];
+	[constraint fullWidth];
+	[constraint bottom];
+	[constraint height:50];
+
+	[constraint view:centerLabel];
+	[constraint centerX];
+	[constraint centerY];
+	[constraint width:150];
+	[constraint height:150];
+
+	[constraint view:leftLabel];
+	[constraint attachTop:topLabel];
+	[constraint attachBottom:bottomLabel];
+	[constraint left];
+	[constraint attachRight:centerLabel];
+
+	[constraint view:rightLabel];
+	[constraint attachTop:topLabel];
+	[constraint attachBottom:bottomLabel];
+	[constraint attachLeft:centerLabel];
+	[constraint right];
+
+	[constraint apply];
+```
+
+Or in Swift.
 
 ```swift
 let topLabel = addLabel("fullWidth/top", backColor:UIColor.redColor())
@@ -28,15 +70,15 @@ constraint.view(centerLabel)
     .height(150)
 
 constraint.view(leftLabel)
-    .top(topLabel)
-    .bottom(bottomLabel)
+    .attachTop(topLabel)
+    .attachBottom(bottomLabel)
     .left()
-    .right(centerLabel)
+    .attachRight(centerLabel)
 
 constraint.view(rightLabel)
-    .top(topLabel)
-    .bottom(bottomLabel)
-    .left(centerLabel)
+    .attachTop(topLabel)
+    .attachBottom(bottomLabel)
+    .attachLeft(centerLabel)
     .right()
 
 constraint.apply()
@@ -57,20 +99,20 @@ BYViewConstraint is available through [CocoaPods](http://cocoapods.org). To inst
 it, simply add the following line to your Podfile:
 
     pod "BYViewConstraint"
-    use_frameworks!
 
-`use_frameworks!` is needed because BYViewConstraint is Swift class.
+then install the pod.
+
+```
+pod install
+```
 
 ### for Swift Project
 
-- Add `import BYViewConstraint` in your swift file using BYViewConstraint.
+- Add `import "BYViewConstraint.h"` into your Objective-C bridging header file (<Project Name>-Bridging-Header.h).
 
 ### for Objective-C Project
 
-- Add BYViewConstraint.swift in your project.
-- Add `#import "<Project Name>-Swift.h"` in your .m file using BYViewConstraint.
-
-**Let me know how to integrate a pod based on Swift into Objective-C project.**
+- Add `#import "BYViewConstraint.h"` in your .m file using BYViewConstraint.
 
 ## Author
 

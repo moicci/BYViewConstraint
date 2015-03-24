@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6587890CA9958CE89B6208C1 /* Pods_ObjcDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D2905EBBBF48D0ECED7D928 /* Pods_ObjcDemo.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		95D6A07D1AB82C9700C1ED38 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 95D6A07C1AB82C9700C1ED38 /* main.m */; };
 		95D6A0801AB82C9700C1ED38 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 95D6A07F1AB82C9700C1ED38 /* AppDelegate.m */; };
 		95D6A0831AB82C9700C1ED38 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95D6A0821AB82C9700C1ED38 /* ViewController.m */; };
@@ -15,7 +14,7 @@
 		95D6A0881AB82C9700C1ED38 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95D6A0871AB82C9700C1ED38 /* Images.xcassets */; };
 		95D6A08B1AB82C9700C1ED38 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95D6A0891AB82C9700C1ED38 /* LaunchScreen.xib */; };
 		95D6A0971AB82C9700C1ED38 /* ObjcDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 95D6A0961AB82C9700C1ED38 /* ObjcDemoTests.m */; };
-		95D6A0D61AB8304C00C1ED38 /* BYViewConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D6A0D51AB8304C00C1ED38 /* BYViewConstraint.swift */; };
+		DA38B82B2291C66EFB679CE0 /* libPods-ObjcDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E99CDC4B94525FAF5FB5A060 /* libPods-ObjcDemo.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,7 +28,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2D2905EBBBF48D0ECED7D928 /* Pods_ObjcDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ObjcDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		95D6A0771AB82C9700C1ED38 /* ObjcDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ObjcDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95D6A07B1AB82C9700C1ED38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		95D6A07C1AB82C9700C1ED38 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -45,8 +43,8 @@
 		95D6A0961AB82C9700C1ED38 /* ObjcDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ObjcDemoTests.m; sourceTree = "<group>"; };
 		95D6A0CE1AB82E1000C1ED38 /* ObjcDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ObjcDemo-Bridging-Header.h"; sourceTree = "<group>"; };
 		95D6A0D31AB8302A00C1ED38 /* BYViewConstraint.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BYViewConstraint.framework; path = "Pods/../build/Debug-iphoneos/Pods-ObjcDemo/BYViewConstraint.framework"; sourceTree = "<group>"; };
-		95D6A0D51AB8304C00C1ED38 /* BYViewConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BYViewConstraint.swift; path = ../../Pod/Classes/BYViewConstraint.swift; sourceTree = "<group>"; };
 		B95A6C4E7A923A5DEBC3995A /* Pods-ObjcDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObjcDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-ObjcDemo/Pods-ObjcDemo.release.xcconfig"; sourceTree = "<group>"; };
+		E99CDC4B94525FAF5FB5A060 /* libPods-ObjcDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ObjcDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED3CBFC2E6D0C5A0D832BD5A /* Pods-ObjcDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObjcDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ObjcDemo/Pods-ObjcDemo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -55,7 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6587890CA9958CE89B6208C1 /* Pods_ObjcDemo.framework in Frameworks */,
+				DA38B82B2291C66EFB679CE0 /* libPods-ObjcDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,7 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				95D6A0D31AB8302A00C1ED38 /* BYViewConstraint.framework */,
-				2D2905EBBBF48D0ECED7D928 /* Pods_ObjcDemo.framework */,
+				E99CDC4B94525FAF5FB5A060 /* libPods-ObjcDemo.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -90,7 +88,6 @@
 		95D6A06E1AB82C9600C1ED38 = {
 			isa = PBXGroup;
 			children = (
-				95D6A0D51AB8304C00C1ED38 /* BYViewConstraint.swift */,
 				95D6A0791AB82C9700C1ED38 /* ObjcDemo */,
 				95D6A0931AB82C9700C1ED38 /* ObjcDemoTests */,
 				95D6A0781AB82C9700C1ED38 /* Products */,
@@ -161,7 +158,6 @@
 				95D6A0731AB82C9700C1ED38 /* Sources */,
 				95D6A0741AB82C9700C1ED38 /* Frameworks */,
 				95D6A0751AB82C9700C1ED38 /* Resources */,
-				CC78353C079CD99DC38036D5 /* Embed Pods Frameworks */,
 				DCFB74787D7FF1AE7E60E300 /* Copy Pods Resources */,
 			);
 			buildRules = (
@@ -264,21 +260,6 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		CC78353C079CD99DC38036D5 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ObjcDemo/Pods-ObjcDemo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		DCFB74787D7FF1AE7E60E300 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -301,7 +282,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95D6A0D61AB8304C00C1ED38 /* BYViewConstraint.swift in Sources */,
 				95D6A0831AB82C9700C1ED38 /* ViewController.m in Sources */,
 				95D6A0801AB82C9700C1ED38 /* AppDelegate.m in Sources */,
 				95D6A07D1AB82C9700C1ED38 /* main.m in Sources */,
@@ -433,6 +413,7 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos/Pods-ObjcDemo",
 				);
 				INFOPLIST_FILE = ObjcDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "ObjcDemo/ObjcDemo-Bridging-Header.h";
@@ -451,6 +432,7 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos/Pods-ObjcDemo",
 				);
 				INFOPLIST_FILE = ObjcDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "ObjcDemo/ObjcDemo-Bridging-Header.h";

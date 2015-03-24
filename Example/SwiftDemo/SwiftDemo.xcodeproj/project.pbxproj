@@ -13,7 +13,7 @@
 		95D6A0B61AB82CAF00C1ED38 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95D6A0B51AB82CAF00C1ED38 /* Images.xcassets */; };
 		95D6A0B91AB82CAF00C1ED38 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95D6A0B71AB82CAF00C1ED38 /* LaunchScreen.xib */; };
 		95D6A0C51AB82CAF00C1ED38 /* SwiftDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D6A0C41AB82CAF00C1ED38 /* SwiftDemoTests.swift */; };
-		D1B3FF5B6F83929553D24BF2 /* Pods_SwiftDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42FD228561EE6B90FCF500EB /* Pods_SwiftDemo.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		D90F6EC4F49EDA74829A9B98 /* libPods-SwiftDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FC8C2F050F20DC04EEEEC7C /* libPods-SwiftDemo.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,8 +28,9 @@
 
 /* Begin PBXFileReference section */
 		1CC2751AF41F91CA623E5663 /* Pods-SwiftDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftDemo/Pods-SwiftDemo.debug.xcconfig"; sourceTree = "<group>"; };
-		42FD228561EE6B90FCF500EB /* Pods_SwiftDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70BE1317E71740CC75D619B4 /* Pods-SwiftDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftDemo/Pods-SwiftDemo.release.xcconfig"; sourceTree = "<group>"; };
+		7FC8C2F050F20DC04EEEEC7C /* libPods-SwiftDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SwiftDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		95D4B43A1AC14E5F00399CBE /* SwiftDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftDemo-Bridging-Header.h"; sourceTree = "<group>"; };
 		95D6A0A91AB82CAF00C1ED38 /* SwiftDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95D6A0AD1AB82CAF00C1ED38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		95D6A0AE1AB82CAF00C1ED38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -47,7 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1B3FF5B6F83929553D24BF2 /* Pods_SwiftDemo.framework in Frameworks */,
+				D90F6EC4F49EDA74829A9B98 /* libPods-SwiftDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				95D6A0AD1AB82CAF00C1ED38 /* Info.plist */,
+				95D4B43A1AC14E5F00399CBE /* SwiftDemo-Bridging-Header.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -131,7 +133,7 @@
 		C35E88FE21D485E15ACAF49D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				42FD228561EE6B90FCF500EB /* Pods_SwiftDemo.framework */,
+				7FC8C2F050F20DC04EEEEC7C /* libPods-SwiftDemo.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -147,7 +149,6 @@
 				95D6A0A51AB82CAF00C1ED38 /* Sources */,
 				95D6A0A61AB82CAF00C1ED38 /* Frameworks */,
 				95D6A0A71AB82CAF00C1ED38 /* Resources */,
-				8434E0AF2BB014F505D034FD /* Embed Pods Frameworks */,
 				BE8DC1641E07F9E68C07D7BD /* Copy Pods Resources */,
 			);
 			buildRules = (
@@ -248,21 +249,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		8434E0AF2BB014F505D034FD /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftDemo/Pods-SwiftDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BE8DC1641E07F9E68C07D7BD /* Copy Pods Resources */ = {
@@ -412,9 +398,13 @@
 			baseConfigurationReference = 1CC2751AF41F91CA623E5663 /* Pods-SwiftDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = SwiftDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SwiftDemo/SwiftDemo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -423,9 +413,12 @@
 			baseConfigurationReference = 70BE1317E71740CC75D619B4 /* Pods-SwiftDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = SwiftDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SwiftDemo/SwiftDemo-Bridging-Header.h";
 			};
 			name = Release;
 		};
