@@ -62,15 +62,21 @@
 }
 
 // @param axis .CenterX, .CenterY
-- (BYViewConstraint*)centerX {
-	return [self center:NSLayoutAttributeCenterX];
+- (BYViewConstraint*)centerX { return [self centerX:_superview]; }
+- (BYViewConstraint*)centerY { return [self centerY:_superview]; }
+
+- (BYViewConstraint*)centerX:(UIView*)view { return [self centerX:view offset:0]; }
+- (BYViewConstraint*)centerY:(UIView*)view { return [self centerY:view offset:0]; }
+
+- (BYViewConstraint*)centerX:(UIView*)view offset:(CGFloat)offset {
+	 return [self center:NSLayoutAttributeCenterX to:view offset:offset];
 }
-- (BYViewConstraint*)centerY {
-	return [self center:NSLayoutAttributeCenterY];
+- (BYViewConstraint*)centerY:(UIView*)view offset:(CGFloat)offset {
+	 return [self center:NSLayoutAttributeCenterY to:view offset:offset];
 }
 
-- (BYViewConstraint*)center:(NSLayoutAttribute)axis {
-	 return [self complex:axis to:_superview at:axis metric:0];
+- (BYViewConstraint*)center:(NSLayoutAttribute)axis to:(UIView*)view offset:(CGFloat)offset {
+	 return [self complex:axis to:view at:axis metric:offset];
 }
 
 // view の左を attachTo の右に揃える

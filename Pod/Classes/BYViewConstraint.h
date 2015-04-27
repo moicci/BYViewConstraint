@@ -29,6 +29,12 @@
 - (BYViewConstraint*)centerX;
 - (BYViewConstraint*)centerY;
 
+- (BYViewConstraint*)centerX:(UIView*)to;
+- (BYViewConstraint*)centerY:(UIView*)to;
+
+- (BYViewConstraint*)centerX:(UIView*)to offset:(CGFloat)offset;
+- (BYViewConstraint*)centerY:(UIView*)to offset:(CGFloat)offset;
+
 // view の左を to の右に揃える
 - (BYViewConstraint*)attachLeft:(UIView*)to offset:(CGFloat)offset;
 - (BYViewConstraint*)attachRight:(UIView*)to offset:(CGFloat)offset;
