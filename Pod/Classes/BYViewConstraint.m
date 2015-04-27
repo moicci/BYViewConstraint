@@ -36,6 +36,14 @@
 	return self;
 }
 
+- (BYViewConstraint*)layout:(NSLayoutAttribute)at to:(UIView*)toView at:(NSLayoutAttribute)toAt metric:(float)metric {
+   return [self complex:at to:toView at:toAt metric:metric];
+}
+
+- (BYViewConstraint*)layout:(NSLayoutAttribute)at to:(UIView*)toView at:(NSLayoutAttribute)toAt {
+   return [self complex:at to:toView at:toAt metric:(CGFloat)0.0];
+}
+
 - (BYViewConstraint*)apply {
 	[_superview addConstraints:_constraints];
 	return self;

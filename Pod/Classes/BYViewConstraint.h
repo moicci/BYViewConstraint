@@ -11,8 +11,10 @@
 
 - (id)initWithSuperview:(UIView*)superview;
 
-// どんなパターンでもいOK
+// どんなパターンでもOK
 - (BYViewConstraint*)complex:(NSLayoutAttribute)at to:(UIView*)toView at:(NSLayoutAttribute)toAt metric:(CGFloat)metric;
+- (BYViewConstraint*)layout:(NSLayoutAttribute)at to:(UIView*)toView at:(NSLayoutAttribute)toAt metric:(float)metric;
+- (BYViewConstraint*)layout:(NSLayoutAttribute)at to:(UIView*)toView at:(NSLayoutAttribute)toAt;
 
 // 制約を適用
 - (BYViewConstraint*)apply;
